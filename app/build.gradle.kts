@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    alias(libs.plugins.daggerHilt)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -59,6 +62,29 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    //Room
+    implementation(libs.androidx.room.runtime)
+    //implementation(libs.androidx.compose.material)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    //Lifecycle
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    //DaggerHilt
+    implementation(libs.com.google.dagger.hilt)
+    kapt(libs.com.google.dagger.hilt.compiler)
+    //Hilt
+    implementation(libs.androidx.hilt.navigation)
+    kapt(libs.androidx.hilt)
+    //Firebase
+    implementation(platform(libs.com.google.firebase.bom))
+    implementation(libs.com.google.firebase)
+    implementation(libs.com.google.firebase.auth)
+    implementation(libs.com.google.android.gms.play.services.auth)
+    //Icons
+    implementation(libs.androidx.compose.material.icons)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

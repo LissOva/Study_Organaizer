@@ -1,13 +1,22 @@
 [versions]
 agp = "8.4.0"
 kotlin = "1.9.0"
-coreKtx = "1.10.1"
+coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.6.1"
-activityCompose = "1.8.0"
-composeBom = "2023.08.00"
+lifecycleRuntimeKtx = "2.7.0"
+activityCompose = "1.9.0"
+composeBom = "2024.05.00"
+
+roomVersion = "2.6.1"
+lifecycleVersion = "2.7.0"
+daggerHiltVersion = "2.49"
+hiltVersion = "1.2.0"
+googleServiseVersion="4.4.1"
+googleAuthVersion="21.1.1"
+firebaseBomVersion = "33.0.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,8 +33,36 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+#Room
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref="roomVersion" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref="roomVersion" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref="roomVersion" }
+#Lifecycle
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref="lifecycleVersion" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref="lifecycleVersion" }
+#DaggerHilt
+com-google-dagger-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref="daggerHiltVersion" }
+com-google-dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref="daggerHiltVersion" }
+#Hilt
+androidx-hilt = { group = "androidx.hilt", name = "hilt-compiler", version.ref="hiltVersion" }
+androidx-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref="hiltVersion" }
+#Firebase
+com-google-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref="firebaseBomVersion" }
+com-google-firebase = { group = "com.google.firebase", name = "firebase-database"}
+com-google-firebase-auth = { group = "com.google.firebase", name = "firebase-auth"}
+com-google-android-gms-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref="googleAuthVersion"}
+#Icons
+androidx-compose-material-icons = { group = "androidx.compose.material", name = "material-icons-extended"}
+
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+#daggerHilt
+daggerHilt = {id = "com.google.dagger.hilt.android", version.ref = "daggerHiltVersion"}
+#googleServices
+googleServices = {id = "com.google.gms.google-services", version.ref = "googleServiseVersion"}
+
 

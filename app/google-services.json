@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "511944195851",
+    "project_id": "study-organaizer",
+    "storage_bucket": "study-organaizer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511944195851:android:0b84049c32eb2d7544ec0e",
+        "android_client_info": {
+          "package_name": "kit.eliza.studyorganaizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511944195851-pqogdqln765sfcf7siavfef3kc7ui2s0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kit.eliza.studyorganaizer",
+            "certificate_hash": "d60eb92defb3d88014ec44d01eeded198aef0b8e"
+          }
+        },
+        {
+          "client_id": "511944195851-vlrtae16fh6kn3a78hrg20ltqpjasfud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANkRtk1ZVF5oeNk5lDaRm-LsnRo2QW-rY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511944195851-vlrtae16fh6kn3a78hrg20ltqpjasfud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
