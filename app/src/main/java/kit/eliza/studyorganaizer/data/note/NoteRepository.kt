@@ -22,6 +22,9 @@ interface NoteRepository {
     //Получить заметку по id
     fun getNoteById(id: Int): Flow<Note>
 
+    //Получить заметки по имени
+    fun getAllNoteByName(nameSearch: String): Flow<List<Note>>
+
     //Удалить заметку
     suspend fun deleteNote(note: Note)
 }

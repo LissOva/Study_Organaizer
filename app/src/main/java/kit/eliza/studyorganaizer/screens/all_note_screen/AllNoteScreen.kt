@@ -38,9 +38,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import kit.eliza.studyorganaizer.AllNoteEvent
 import kit.eliza.studyorganaizer.ModeNote
 import kit.eliza.studyorganaizer.R
 import kit.eliza.studyorganaizer.Routes
+import kit.eliza.studyorganaizer.SubjectEvent
 import kit.eliza.studyorganaizer.data.note.Note
 import kit.eliza.studyorganaizer.screens.navigate_bar.NavBar
 
@@ -62,34 +64,13 @@ fun AllNoteScreen(
                     title = {
                         Text(stringResource(id = R.string.TitleMyNotes))
 
-                    },
-                    /*navigationIcon = {
-                    IconButton(onClick = { onEvent(
-                        Event.Navigate(
-                            Routes.SUBJECT_LIST
-                        )
-                    )
-                    }) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Localized description"
-                        )
-                    }
-                },*/
-                    actions = {
-                        /*IconButton(onClick = { *//* do something *//* }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.swap_24),
-                                contentDescription = "Localized description"
-                            )
-                        }*/
                     }
                 )
             }
         }
     ) {
-        vm.get()
-        val listNotes = vm.listNotes?.collectAsState(initial = emptyList())
+        vm.onEvent(AllNoteEvent.GetAllNote)
+        val listNotes = vm.listNotes.collectAsState()
         Column(
         ) {
             LazyColumn(
@@ -101,13 +82,13 @@ fun AllNoteScreen(
                     Spacer(modifier = Modifier.padding(top = 46.dp))
                 }
                 item{
-                    SearchCard()
+                    SearchCard(vm)
                 }
-                if (listNotes != null) {
+
                     items(listNotes.value) { note ->
                         NoteCard(note = note, navController = navController)
                     }
-                }
+
             }
         }
 
@@ -116,17 +97,17 @@ fun AllNoteScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchCard() {
+fun SearchCard(vm: AllNoteViewModel) {
     var search by remember { mutableStateOf("") }
     SearchBar(
         modifier = Modifier
             .fillMaxWidth(),
             //.height(56.dp),
         query = search,
-        onQueryChange ={ text -> search = text },
-        onSearch = {text ->
-
-        },
+        onQueryChange ={ text -> search = text
+            vm.onEvent(AllNoteEvent.OnAllNoteEventSearch(search))
+                       },
+        onSearch = {},
         active = false,
         onActiveChange = {},
         placeholder = {

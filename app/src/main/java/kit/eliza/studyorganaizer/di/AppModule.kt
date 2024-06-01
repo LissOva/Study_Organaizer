@@ -24,6 +24,8 @@ import kit.eliza.studyorganaizer.data.subject.SubjectRepoImpl
 import kit.eliza.studyorganaizer.data.subject.SubjectRepository
 import kit.eliza.studyorganaizer.data.text_note.TextNoteRepoImpl
 import kit.eliza.studyorganaizer.data.text_note.TextNoteRepository
+import kit.eliza.studyorganaizer.data.to_do.ToDoRepoImpl
+import kit.eliza.studyorganaizer.data.to_do.ToDoRepository
 import kit.eliza.studyorganaizer.data.type_note.TypeNote
 import kit.eliza.studyorganaizer.data.type_note.TypeNoteRepoImpl
 import kit.eliza.studyorganaizer.data.type_note.TypeNoteRepository
@@ -107,5 +109,11 @@ object AppModule {
     @Singleton
     fun provideText(db: MainDB): TextNoteRepository{
         return TextNoteRepoImpl(db.textNoteDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideToDo(db: MainDB): ToDoRepository{
+        return ToDoRepoImpl(db.toDoDao)
     }
 }

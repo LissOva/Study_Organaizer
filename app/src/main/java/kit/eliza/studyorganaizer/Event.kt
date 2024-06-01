@@ -56,3 +56,8 @@ sealed class NoteEvent {
     data class OnNoteEventInsertFormula(val eventNote: FormulaNote) : NoteEvent()
 
 }
+
+sealed class AllNoteEvent {
+    data class OnAllNoteEventSearch(var searchName: String) : AllNoteEvent()
+    data object GetAllNote : AllNoteEvent()
+}

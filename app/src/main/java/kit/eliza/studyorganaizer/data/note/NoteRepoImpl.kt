@@ -20,6 +20,10 @@ class NoteRepoImpl
         return dao.getNoteById(id)
     }
 
+    override fun getAllNoteByName(nameSearch: String): Flow<List<Note>> {
+        return dao.getAllNoteByName(nameSearch)
+    }
+
     override fun getAllNote(): Flow<List<Note>> {
         return dao.getAllNote()
     }

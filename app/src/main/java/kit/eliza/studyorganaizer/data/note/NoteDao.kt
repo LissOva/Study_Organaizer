@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kit.eliza.studyorganaizer.data.subject.Subject
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -29,6 +30,10 @@ interface NoteDao {
     //Получить заметку по id
     @Query("SELECT * FROM note WHERE id = :id")
     fun getNoteById(id: Int): Flow<Note>
+
+    //Получить заметки по имени
+    @Query("SELECT * FROM note WHERE name LIKE :nameSearch")
+    fun getAllNoteByName(nameSearch: String): Flow<List<Note>>
 
     //Удалить заметку
     @Delete

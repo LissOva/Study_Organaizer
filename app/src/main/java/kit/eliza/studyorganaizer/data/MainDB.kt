@@ -17,6 +17,8 @@ import kit.eliza.studyorganaizer.data.subject.Subject
 import kit.eliza.studyorganaizer.data.subject.SubjectDao
 import kit.eliza.studyorganaizer.data.text_note.TextNote
 import kit.eliza.studyorganaizer.data.text_note.TextNoteDao
+import kit.eliza.studyorganaizer.data.to_do.ToDo
+import kit.eliza.studyorganaizer.data.to_do.ToDoDao
 import kit.eliza.studyorganaizer.data.type_note.TypeNote
 import kit.eliza.studyorganaizer.data.type_note.TypeNoteDao
 
@@ -29,11 +31,12 @@ import kit.eliza.studyorganaizer.data.type_note.TypeNoteDao
         TextNote::class,
         EventNote::class,
         QuoteNote::class,
-        FormulaNote::class],
-    version = 1_5,
+        FormulaNote::class,
+        ToDo::class],
+    version = 1_6,
     exportSchema = true,
     autoMigrations = [
-        AutoMigration (from = 1_4, to = 1_5)
+        AutoMigration (from = 1_5, to = 1_6)
     ]
 )
 
@@ -47,6 +50,7 @@ abstract class MainDB : RoomDatabase(){
     abstract val eventNoteDao: EventNoteDao
     abstract val quoteNoteDao: QuoteNoteDao
     abstract val formulaNoteDao: FormulaNoteDao
+    abstract val toDoDao: ToDoDao
 }
 
 
