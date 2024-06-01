@@ -20,6 +20,6 @@ data class QuoteNote (
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     val idNote: Int,
-    val text: String,
-    val author: String
+    var text: String,
+    var author: String
 )

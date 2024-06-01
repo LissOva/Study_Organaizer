@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TextNoteDao {
     //Добавить текст
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun inserTextNote(textNote: TextNote)
 
     //Обновить текст

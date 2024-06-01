@@ -22,4 +22,8 @@ class FormulaNoteNoteRepoImpl
     override suspend fun deleteFormulaNote(formulaNote: FormulaNote) {
         dao.deleteFormulaNote(formulaNote)
     }
+
+    override suspend fun deleteAllFormulaNoteById(id: Int) {
+        dao.deleteAllFormulaNoteById(id)
+    }
 }

@@ -13,9 +13,9 @@ import kit.eliza.studyorganaizer.data.note.Note
             childColumns = ["idNote"],
             onDelete = ForeignKey.CASCADE
         )])
-data class TextNote (
+data class TextNote(
     @PrimaryKey
     val idNote: Int,
-    val title: String,
-    val text: String
+    var title: String? = null,
+    var text: String
 )

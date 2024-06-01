@@ -1,5 +1,6 @@
 package kit.eliza.studyorganaizer.data.event_note
 
+import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 interface EventNoteRepository {
@@ -14,4 +15,7 @@ interface EventNoteRepository {
 
     //Удалить событие
     suspend fun deleteEventNote(eventNote: EventNote)
+
+    //Удалить все события заметки
+    suspend fun deleteAllEventNoteById(id: Int)
 }

@@ -19,4 +19,7 @@ interface FormulaNoteRepository {
 
     //Удалить формулу
     suspend fun deleteFormulaNote(formulaNote: FormulaNote)
+
+    //Удалить все формулы заметки
+    suspend fun deleteAllFormulaNoteById(id: Int)
 }

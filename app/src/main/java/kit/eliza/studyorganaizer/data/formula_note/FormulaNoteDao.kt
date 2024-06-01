@@ -3,6 +3,7 @@ package kit.eliza.studyorganaizer.data.formula_note
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface FormulaNoteDao {
     //Добавить формулу
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFormulaNote(formulaNote: FormulaNote)
 
     //Обновить формулу
@@ -24,4 +25,8 @@ interface FormulaNoteDao {
     //Удалить формулу
     @Delete
     suspend fun deleteFormulaNote(formulaNote: FormulaNote)
+
+    //Удалить все формулы заметки
+    @Query("DELETE FROM formula WHERE idNote = :id")
+    suspend fun deleteAllFormulaNoteById(id: Int)
 }

@@ -21,7 +21,7 @@ data class EventNote (
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     val idNote: Int,
-    val yearStart: String,
-    val yearEnd: String? = null,
-    val text: String
+    var yearStart: String,
+    var yearEnd: String? = null,
+    var text: String
 )

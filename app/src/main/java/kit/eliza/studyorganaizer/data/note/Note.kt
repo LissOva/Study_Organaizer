@@ -18,7 +18,7 @@ import kit.eliza.studyorganaizer.data.section.Section
 data class Note(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val idSection: Int,
-    val name: String,
-    val idType: Int
+    var idSection: Int,
+    var name: String,
+    var idType: Int
 )

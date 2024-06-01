@@ -1,5 +1,6 @@
 package kit.eliza.studyorganaizer.data.quote_note
 
+import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 interface QuoteNoteRepository {
@@ -14,4 +15,7 @@ interface QuoteNoteRepository {
 
     //Удалить цитату
     suspend fun deleteQuoteNote(quoteNote: QuoteNote)
+
+    //Удалить все цитаты заметки
+    suspend fun deleteAllQuotNoteById(id: Int)
 }

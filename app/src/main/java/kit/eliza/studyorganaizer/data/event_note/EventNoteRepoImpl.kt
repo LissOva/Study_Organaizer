@@ -19,4 +19,8 @@ class EventNoteRepoImpl
     override suspend fun deleteEventNote(eventNote: EventNote) {
         dao.deleteEventNote(eventNote)
     }
+
+    override suspend fun deleteAllEventNoteById(id: Int) {
+        dao.deleteAllEventNoteById(id)
+    }
 }

@@ -19,8 +19,8 @@ class FormulaNote(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     val idNote: Int,
-    val formula: String,
-    val text: String? = null,
-    val name: String? = null,
-    val author: String? = null
+    var formula: String,
+    var text: String? = null,
+    var name: String? = null,
+    var author: String? = null
 )

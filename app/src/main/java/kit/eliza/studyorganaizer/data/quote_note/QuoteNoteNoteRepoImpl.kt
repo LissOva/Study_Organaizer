@@ -18,4 +18,9 @@ class QuoteNoteNoteRepoImpl
     override suspend fun deleteQuoteNote(quoteNote: QuoteNote) {
         dao.deleteQuoteNote(quoteNote)
     }
+
+    override suspend fun deleteAllQuotNoteById(id: Int) {
+        dao.deleteAllQuotNoteById(id)
+    }
+
 }

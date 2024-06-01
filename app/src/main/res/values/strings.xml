@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">Study Organaizer</string>
+    <string name="app_name">Органайзер учебы</string>
+    <string name="BarItemSubject">Предметы</string>
+    <string name="BarItemNotes">Записи</string>
+    <string name="BarItemSettings">Настройки</string>
+    <string name="TitleMySubject">Ваши предметы</string>
+    <string name="TitleMyNotes">Ваши записи</string>
     <string name="default_web_client_id">511944195851-pqogdqln765sfcf7siavfef3kc7ui2s0.apps.googleusercontent.com</string>
 </resources>

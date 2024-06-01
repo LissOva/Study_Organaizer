@@ -21,6 +21,13 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] =
+                    "$projectDir/schemas"
+            }
+        }
     }
 
     buildTypes {

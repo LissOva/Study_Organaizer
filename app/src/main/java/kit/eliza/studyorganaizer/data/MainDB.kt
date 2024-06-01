@@ -30,11 +30,11 @@ import kit.eliza.studyorganaizer.data.type_note.TypeNoteDao
         EventNote::class,
         QuoteNote::class,
         FormulaNote::class],
-    version = 1,
-    exportSchema = true/*,
+    version = 1_5,
+    exportSchema = true,
     autoMigrations = [
-        AutoMigration (from = 1, to = 1)
-    ]*/
+        AutoMigration (from = 1_4, to = 1_5)
+    ]
 )
 
 
