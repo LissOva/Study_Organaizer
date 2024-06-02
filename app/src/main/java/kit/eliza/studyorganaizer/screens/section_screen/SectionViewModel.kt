@@ -28,12 +28,10 @@ class SectionViewModel @Inject constructor(
     private val subjectRep: SubjectRepository,
     private val sectionRep: SectionRepository,
     private val noteRep: NoteRepository,
-    savedStateHandle: SavedStateHandle
 ) : ViewModel(), DialogController, DialogMessageController {
 
     var sectionName = mutableStateOf("")
         private set
-
 
     var section: Section? = null
 
@@ -91,12 +89,10 @@ class SectionViewModel @Inject constructor(
                     if (subjectId == -1) return@launch
                     if (section != null) {
                         if(section!!.name.isEmpty()){
-                            //sendUiEvent(UiEvent.ShowSnackBar("Name must not be empty!"))
                             return@launch
                         }
                     } else {
                         if(sectionName.value.isEmpty()){
-                            //sendUiEvent(UiEvent.ShowSnackBar("Name must not be empty!"))
                             return@launch
                         }
                     }

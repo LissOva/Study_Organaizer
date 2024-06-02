@@ -36,6 +36,10 @@ fun DialogUI(
                 title = "Раздел"
                 label = "раздела"
             }
+            Routes.TODO_SCREEN -> {
+                title = "Задача"
+                label = "задачи"
+            }
         }
         if (dialogController.showSort.value) {
             title = "Сортировка"

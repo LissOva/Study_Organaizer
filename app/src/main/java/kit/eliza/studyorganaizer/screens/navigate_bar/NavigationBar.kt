@@ -20,6 +20,7 @@ fun NavBar(
     val listItems = listOf(
         BarItem.SubjectItem,
         BarItem.NoteItem,
+        BarItem.ToDoItem,
         //BarItem.SettingsItem
     )
     var flag = false

@@ -6,4 +6,5 @@ object Routes {
     const val NOTE_SCREEN = "note_screen"
     const val ALL_NOTE_LIST = "all_note_screen"
     const val SETTING_SCREEN = "setting_screen"
+    const val TODO_SCREEN = "todo_screen"
 }

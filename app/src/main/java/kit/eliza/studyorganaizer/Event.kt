@@ -7,7 +7,7 @@ import kit.eliza.studyorganaizer.data.quote_note.QuoteNote
 import kit.eliza.studyorganaizer.data.section.Section
 import kit.eliza.studyorganaizer.data.subject.Subject
 import kit.eliza.studyorganaizer.data.text_note.TextNote
-import kit.eliza.studyorganaizer.data.type_note.TypeNote
+import kit.eliza.studyorganaizer.data.to_do.ToDo
 
 sealed class SubjectEvent {
     data object OnSubjectEventInsert : SubjectEvent()
@@ -60,4 +60,15 @@ sealed class NoteEvent {
 sealed class AllNoteEvent {
     data class OnAllNoteEventSearch(var searchName: String) : AllNoteEvent()
     data object GetAllNote : AllNoteEvent()
+}
+
+sealed class ToDoEvent {
+    data object GetToDo : ToDoEvent()
+    data class OnToDoEventInsert(val toDo: ToDo) : ToDoEvent()
+    data class OnToDoEventUpdate(val toDo: ToDo) : ToDoEvent()
+    data object OnToDoEventDelete : ToDoEvent()
+
+    data class OnToDoEventNameChange(val toDoName: String) : ToDoEvent()
+    data class OnPressToDoEvent(var toDo: ToDo) : ToDoEvent()
+
 }

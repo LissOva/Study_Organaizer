@@ -7,12 +7,16 @@ class ToDoRepoImpl (private val dao: ToDoDao) : ToDoRepository{
         dao.insertToDo(toDo)
     }
 
-    override fun getToDO(): Flow<List<ToDo>> {
-        return dao.getToDO()
+    override suspend fun updateToDo(toDo: ToDo) {
+        dao.updateToDo(toDo)
     }
 
-    override fun getCompleteToDO(): Flow<List<ToDo>> {
-        return dao.getCompleteToDO()
+    override fun getToDo(): Flow<List<ToDo>> {
+        return dao.getToDo()
+    }
+
+    override fun getCompleteToDo(): Flow<List<ToDo>> {
+        return dao.getCompleteToDo()
     }
 
     override suspend fun deleteToDo(toDo: ToDo) {

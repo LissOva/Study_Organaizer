@@ -14,6 +14,7 @@ import kit.eliza.studyorganaizer.screens.note_screen.NoteScreen
 import kit.eliza.studyorganaizer.screens.section_screen.SectionScreen
 import kit.eliza.studyorganaizer.screens.subject_screen.AllNoteScreen
 import kit.eliza.studyorganaizer.screens.subject_screen.SubjectScreen
+import kit.eliza.studyorganaizer.screens.to_do_screen.ToDoScreen
 
 @Composable
 fun MainScreen(){
@@ -41,6 +42,9 @@ fun AppNavGraph(navController: NavHostController) {
         }
         composable(Routes.ALL_NOTE_LIST) {
             AllNoteScreen(navController = navController)
+        }
+        composable(Routes.TODO_SCREEN) {
+            ToDoScreen(navController = navController)
         }
         composable(
             Routes.NOTE_SCREEN + "/{noteId}" + "/{mode}",
