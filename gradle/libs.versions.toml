@@ -16,6 +16,7 @@ hiltVersion = "1.2.0"
 googleServiseVersion="4.4.1"
 googleAuthVersion="21.1.1"
 firebaseBomVersion = "33.0.0"
+gsonVersion = "2.11.0"
 
 
 [libraries]
@@ -53,7 +54,8 @@ com-google-firebase-auth = { group = "com.google.firebase", name = "firebase-aut
 com-google-android-gms-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref="googleAuthVersion"}
 #Icons
 androidx-compose-material-icons = { group = "androidx.compose.material", name = "material-icons-extended"}
-
+#Gson
+com-google-code-gson = {group = "com.google.code.gson", name = "gson", version.ref="gsonVersion"}
 
 
 

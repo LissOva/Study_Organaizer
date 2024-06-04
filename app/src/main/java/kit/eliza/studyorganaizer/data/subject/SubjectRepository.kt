@@ -1,5 +1,6 @@
 package kit.eliza.studyorganaizer.data.subject
 
+import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
@@ -7,6 +8,9 @@ interface SubjectRepository {
 
     //Добавить предмет
     suspend fun insertSubject(subject: Subject)
+
+    //Добавить список предметов
+    suspend fun insertListSubject(subjects: List<Subject>)
 
     //Обновить предмет
     suspend fun updateSubject(subject: Subject)
@@ -31,4 +35,7 @@ interface SubjectRepository {
 
     //Удалить предмет
     suspend fun deleteSubject(subject: Subject)
+
+    //Удалить все предметы
+    suspend fun deleteAllSubject()
 }

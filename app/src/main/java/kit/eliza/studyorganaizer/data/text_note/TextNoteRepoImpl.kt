@@ -16,6 +16,10 @@ class TextNoteRepoImpl
         return dao.getTextById(idNote)
     }
 
+    override fun getAllText(): Flow<List<TextNote>> {
+        return dao.getAllText()
+    }
+
     override suspend fun deleteText(textNote: TextNote) {
         dao.deleteText(textNote)
     }

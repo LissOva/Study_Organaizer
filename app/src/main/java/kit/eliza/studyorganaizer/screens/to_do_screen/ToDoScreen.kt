@@ -49,9 +49,9 @@ import kit.eliza.studyorganaizer.dialog.DialogUI
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ToDoScreen(
-    navController: NavHostController,
     vm: ToDoViewModel = hiltViewModel()
 ) {
+
     Scaffold(
         topBar = {
             Surface(shadowElevation = 6.dp) {

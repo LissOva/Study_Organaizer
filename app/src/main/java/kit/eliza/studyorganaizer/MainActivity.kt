@@ -2,6 +2,7 @@ package kit.eliza.studyorganaizer
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Environment
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -19,6 +20,7 @@ import kit.eliza.studyorganaizer.screens.section_screen.SectionScreen
 import kit.eliza.studyorganaizer.screens.subject_screen.AllNoteScreen
 import kit.eliza.studyorganaizer.screens.subject_screen.SubjectScreen
 import kit.eliza.studyorganaizer.ui.theme.StudyOrganaizerTheme
+import java.io.File
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -27,8 +29,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            //val navController = rememberNavController()
             StudyOrganaizerTheme {
+                val folderName = FileName.FOLDER
+                val folder = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), folderName)
+                if (!folder.exists()) {
+                    folder.mkdirs()
+                }
+
                 MainScreen()
             }
         }

@@ -15,6 +15,10 @@ class QuoteNoteNoteRepoImpl
         return dao.getAllQuotNoteById(id)
     }
 
+    override fun getAllQuotNote(): Flow<List<QuoteNote>> {
+        return dao.getAllQuotNote()
+    }
+
     override suspend fun deleteQuoteNote(quoteNote: QuoteNote) {
         dao.deleteQuoteNote(quoteNote)
     }

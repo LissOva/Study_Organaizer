@@ -27,7 +27,15 @@ interface ToDoDao {
     @Query("SELECT * FROM to_do WHERE status = 1 ORDER BY id DESC")
     fun getCompleteToDo(): Flow<List<ToDo>>
 
+    //Получить все задачи
+    @Query("SELECT * FROM to_do")
+    fun getAllToDo(): Flow<List<ToDo>>
+
     //Удалить задачу
     @Delete
     suspend fun deleteToDo(toDo: ToDo)
+
+    //Удалить все задачи
+    @Query("DELETE FROM to_do")
+    suspend fun deleteAllToDo()
 }

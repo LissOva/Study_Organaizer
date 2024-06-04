@@ -13,6 +13,9 @@ interface EventNoteRepository {
     //Получить все события заметки
     fun getAllEventNoteById(id: Int): Flow<List<EventNote>>
 
+    //Получить все события
+    fun getAllEventNote(): Flow<List<EventNote>>
+
     //Удалить событие
     suspend fun deleteEventNote(eventNote: EventNote)
 

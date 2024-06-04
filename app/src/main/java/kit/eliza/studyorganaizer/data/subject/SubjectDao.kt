@@ -13,6 +13,10 @@ interface SubjectDao {
     @Insert
     suspend fun insertSubject(subject: Subject)
 
+    //Добавить список предметов
+    @Insert
+    suspend fun insertListSubject(subjects: List<Subject>)
+
     //Обновить предмет
     @Update
     suspend fun updateSubject(subject: Subject)
@@ -44,4 +48,8 @@ interface SubjectDao {
     //Удалить предмет
     @Delete
     suspend fun deleteSubject(subject: Subject)
+
+    //Удалить все предметы
+    @Query("DELETE FROM subject")
+    suspend fun deleteAllSubject()
 }

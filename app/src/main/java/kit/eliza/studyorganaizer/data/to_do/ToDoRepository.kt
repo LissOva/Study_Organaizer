@@ -19,6 +19,12 @@ interface ToDoRepository {
     //Получить выполненные задачи
     fun getCompleteToDo(): Flow<List<ToDo>>
 
+    //Получить все задачи
+    fun getAllToDo(): Flow<List<ToDo>>
+
     //Удалить задачу
     suspend fun deleteToDo(toDo: ToDo)
+
+    //Удалить все задачи
+    suspend fun deleteAllToDo()
 }

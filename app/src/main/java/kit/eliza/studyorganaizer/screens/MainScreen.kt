@@ -12,6 +12,7 @@ import kit.eliza.studyorganaizer.Routes
 import kit.eliza.studyorganaizer.screens.navigate_bar.NavBar
 import kit.eliza.studyorganaizer.screens.note_screen.NoteScreen
 import kit.eliza.studyorganaizer.screens.section_screen.SectionScreen
+import kit.eliza.studyorganaizer.screens.setting_screen.SettingScreen
 import kit.eliza.studyorganaizer.screens.subject_screen.AllNoteScreen
 import kit.eliza.studyorganaizer.screens.subject_screen.SubjectScreen
 import kit.eliza.studyorganaizer.screens.to_do_screen.ToDoScreen
@@ -44,7 +45,10 @@ fun AppNavGraph(navController: NavHostController) {
             AllNoteScreen(navController = navController)
         }
         composable(Routes.TODO_SCREEN) {
-            ToDoScreen(navController = navController)
+            ToDoScreen()
+        }
+        composable(Routes.SETTING_SCREEN) {
+            SettingScreen(navController)
         }
         composable(
             Routes.NOTE_SCREEN + "/{noteId}" + "/{mode}",

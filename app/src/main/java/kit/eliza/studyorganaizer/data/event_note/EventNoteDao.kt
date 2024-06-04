@@ -22,6 +22,10 @@ interface EventNoteDao {
     @Query("SELECT * FROM event WHERE idNote = :id")
     fun getAllEventNoteById(id: Int): Flow<List<EventNote>>
 
+    //Получить все события
+    @Query("SELECT * FROM event")
+    fun getAllEventNote(): Flow<List<EventNote>>
+
     //Удалить событие
     @Delete
     suspend fun deleteEventNote(eventNote: EventNote)

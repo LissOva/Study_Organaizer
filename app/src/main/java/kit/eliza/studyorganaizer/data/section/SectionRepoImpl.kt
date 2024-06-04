@@ -16,6 +16,10 @@ class SectionRepoImpl
         return dao.getAllSectionById(idSubject)
     }
 
+    override fun getAllSection(): Flow<List<Section>> {
+        return dao.getAllSection()
+    }
+
     override suspend fun deleteSection(section: Section) {
         dao.deleteSection(section)
     }

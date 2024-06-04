@@ -51,12 +51,14 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import kit.eliza.studyorganaizer.ModeNote
 import kit.eliza.studyorganaizer.NoteBlock
 import kit.eliza.studyorganaizer.NoteEvent
+import kit.eliza.studyorganaizer.R
 import kit.eliza.studyorganaizer.data.event_note.EventNote
 import kit.eliza.studyorganaizer.data.formula_note.FormulaNote
 import kit.eliza.studyorganaizer.data.note.Note
@@ -72,11 +74,8 @@ import kit.eliza.studyorganaizer.screens.QuoteBlockEdit
 import kit.eliza.studyorganaizer.screens.TextBlock
 import kit.eliza.studyorganaizer.screens.TextBlockEdit
 
-val modifierTitle = Modifier
-    .fillMaxHeight()
-    .padding(horizontal = 16.dp)
-
 //Экран отображения записей
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -125,13 +124,8 @@ fun NoteScreen(
                             ModeNote.READ -> {
                                 Text(text = vm.note?.name ?: "")
                             }
-
                             ModeNote.EDIT -> {
-                                Text(text = "Редактирование заметки")
-                            }
-
-                            ModeNote.NEW -> {
-                                Text(text = "Создание заметки")
+                                Text(text = stringResource(id = R.string.TitleEditNote))
                             }
                         }
                     },
@@ -151,12 +145,12 @@ fun NoteScreen(
                             if (currentMode == ModeNote.READ) {
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                    contentDescription = "Localized description"
+                                    contentDescription = "Back"
                                 )
                             } else {
                                 Icon(
                                     imageVector = Icons.Default.DeleteOutline,
-                                    contentDescription = "Localized description"
+                                    contentDescription = "Delete"
                                 )
                             }
                         }
@@ -231,12 +225,12 @@ fun NoteScreen(
                             if (currentMode == ModeNote.READ) {
                                 Icon(
                                     imageVector = Icons.Default.Edit,
-                                    contentDescription = "Localized description"
+                                    contentDescription = "Edit"
                                 )
                             } else {
                                 Icon(
                                     imageVector = Icons.Default.Check,
-                                    contentDescription = "Localized description"
+                                    contentDescription = "Complete"
                                 )
                             }
                         }
@@ -278,7 +272,7 @@ fun NoteScreen(
                     value = editNoteName,
                     onValueChange = { editNoteName = it
                         vm.note?.name = it
-                        vm.onEvent(NoteEvent.OnNoteEventInsert(vm.note!!))
+                        vm.onEvent(NoteEvent.OnNoteEventUpdate(vm.note!!))
                         /*noteName = it */},
                     label = { Text("Название заметки") },
                     modifier = Modifier
@@ -352,9 +346,7 @@ fun NoteScreen(
                 }
                 if (selectedChip.value == "Биография" || selectedChip.value == "Тема") {
                     if (listQuote.isNotEmpty()) {
-
                         Title(title = "Цитаты")
-
                         listQuote.forEach { quote ->
                             Row {
                                 IconButton(onClick = {
@@ -429,16 +421,37 @@ fun NoteScreen(
                     Spacer(modifier = Modifier.padding(innerPadding))
                 }
                 item {
-                    textNote?.let { TextBlock(text = it) }
+                    textNote?.let {
+                            TextBlock(text = it)
+                    }
                 }
+                if (listEvent.isNotEmpty()) {
+                    item {
+                        TitleSmall(title = if (listEvent.size == 1 ) "Событие" else "События")
+                        Line()
+                    }
                 items(listEvent) { event ->
                     EventBlock(event = event)
                 }
+                }
+                if (listFormula.isNotEmpty()) {
+                    item {
+                        TitleSmall(title = if (listFormula.size == 1 ) "Формула" else "Формулы")
+                        Line()
+                    }
                 items(listFormula) { formula ->
                     FormulaBlock(formula = formula)
+
                 }
-                items(listQuote) { quote ->
-                    QuoteBlock(quote = quote)
+                    }
+                if (listQuote.isNotEmpty()) {
+                    item {
+                        TitleSmall(title = if (listQuote.size == 1) "Цитата" else "Цитаты")
+                        Line()
+                    }
+                    items(listQuote) { quote ->
+                        QuoteBlock(quote = quote)
+                    }
                 }
             }
         }
@@ -475,6 +488,16 @@ fun Title(title: String) {
     Text(
         text = title,
         style = MaterialTheme.typography.titleLarge,
+        modifier = Modifier
+            .padding(start = 16.dp, top = 6.dp)
+    )
+}
+
+@Composable
+fun TitleSmall(title: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.titleMedium,
         modifier = Modifier
             .padding(start = 16.dp, top = 6.dp)
     )

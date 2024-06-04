@@ -91,6 +91,8 @@ dependencies {
     implementation(libs.com.google.android.gms.play.services.auth)
     //Icons
     implementation(libs.androidx.compose.material.icons)
+    //Gson
+    implementation (libs.com.google.code.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

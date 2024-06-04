@@ -22,6 +22,10 @@ interface SectionDao {
     @Query("SELECT * FROM section WHERE idSubject = :idSubject ORDER BY name ASC")
     fun getAllSectionById(idSubject: Int): Flow<List<Section>>
 
+    //Получить все разделы
+    @Query("SELECT * FROM section")
+    fun getAllSection(): Flow<List<Section>>
+
     //Удалить раздел
     @Delete
     suspend fun deleteSection(section: Section)

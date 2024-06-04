@@ -21,7 +21,7 @@ fun NavBar(
         BarItem.SubjectItem,
         BarItem.NoteItem,
         BarItem.ToDoItem,
-        //BarItem.SettingsItem
+        BarItem.SettingsItem
     )
     var flag = false
 

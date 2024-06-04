@@ -22,6 +22,10 @@ interface QuoteNoteDao {
     @Query("SELECT * FROM quote WHERE idNote = :id")
     fun getAllQuotNoteById(id: Int): Flow<List<QuoteNote>>
 
+    //Получить все цитаты заметки
+    @Query("SELECT * FROM quote")
+    fun getAllQuotNote(): Flow<List<QuoteNote>>
+
     //Удалить цитату
     @Delete
     suspend fun deleteQuoteNote(quoteNote: QuoteNote)

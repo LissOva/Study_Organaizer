@@ -70,5 +70,10 @@ sealed class ToDoEvent {
 
     data class OnToDoEventNameChange(val toDoName: String) : ToDoEvent()
     data class OnPressToDoEvent(var toDo: ToDo) : ToDoEvent()
+}
 
+sealed class SettingEvent{
+    data object DoJsonFile : SettingEvent()
+    data object GetData : SettingEvent()
+    data object UseJsonFile : SettingEvent()
 }

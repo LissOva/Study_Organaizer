@@ -67,10 +67,9 @@ fun SubjectScreen(
                 TopAppBar(
                     colors = TopAppBarDefaults.topAppBarColors(
                         containerColor = MaterialTheme.colorScheme.surface,
-                        //titleContentColor = MaterialTheme.colorScheme.primaryContainer,
                     ),
                     title = {
-                        Text(stringResource(id = R.string.TitleMySubject))
+                        Text(stringResource(id = R.string.BarItemSubject))
 
                     },
                     actions = {
@@ -124,7 +123,6 @@ fun SearchCard(vm: SubjectViewModel) {
     SearchBar(
         modifier = Modifier
             .fillMaxWidth(),
-        //.height(56.dp),
         query = search,
         onQueryChange = { text ->
             search = text
@@ -180,7 +178,6 @@ fun SubjectCard(
                     .typography.titleLarge,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                //.padding(start = 8.dp)
             )
         }
     }

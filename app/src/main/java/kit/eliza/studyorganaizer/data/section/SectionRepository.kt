@@ -1,5 +1,6 @@
 package kit.eliza.studyorganaizer.data.section
 
+import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 interface SectionRepository {
@@ -12,6 +13,9 @@ interface SectionRepository {
 
     //Получить все разделы предмета
     fun getAllSectionById(idSubject: Int): Flow<List<Section>>
+
+    //Получить все разделы
+    fun getAllSection(): Flow<List<Section>>
 
     //Удалить раздел
     suspend fun deleteSection(section: Section)

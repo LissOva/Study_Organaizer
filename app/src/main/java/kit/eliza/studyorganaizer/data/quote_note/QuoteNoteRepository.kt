@@ -13,6 +13,9 @@ interface QuoteNoteRepository {
     //Получить все цитаты заметки
     fun getAllQuoteNoteById(id: Int): Flow<List<QuoteNote>>
 
+    //Получить все цитаты заметки
+    fun getAllQuotNote(): Flow<List<QuoteNote>>
+
     //Удалить цитату
     suspend fun deleteQuoteNote(quoteNote: QuoteNote)
 

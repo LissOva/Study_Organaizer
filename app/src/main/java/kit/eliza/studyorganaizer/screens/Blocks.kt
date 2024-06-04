@@ -27,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -55,13 +56,15 @@ fun TextBlock(
 ) {
     Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         if (text.title != null) {
-            Text(
-                text = text.title!!,
-                style = MaterialTheme
-                    .typography.titleMedium,
-                modifier = Modifier
-                    .padding(bottom = 4.dp)
-            )
+            if (text.title!!.isNotEmpty()) {
+                Text(
+                    text = text.title!!,
+                    style = MaterialTheme
+                        .typography.titleMedium,
+                    modifier = Modifier
+                        .padding(bottom = 4.dp)
+                )
+            }
         }
         Text(
             text = text.text,
@@ -173,44 +176,52 @@ fun QuoteBlockEdit(
 fun FormulaBlock(
     formula: FormulaNote
 ) {
-    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
         if (formula.name != null) {
-            Text(
-                text = formula.name!!,
-                style = MaterialTheme
-                    .typography.titleMedium,
-                modifier = Modifier
-                    .padding(bottom = 4.dp)
-            )
+            if (formula.name!!.isNotEmpty()) {
+                Text(
+                    text = formula.name!!,
+                    style = MaterialTheme
+                        .typography.titleMedium,
+                    modifier = Modifier
+                        .padding(bottom = 4.dp)
+                )
+            }
         }
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(bottom = 8.dp)
         ) {
             Text(
                 text = formula.formula,
-                style = MaterialTheme.typography.titleLarge
+                fontSize = 36.sp,
+                style = MaterialTheme.typography.labelLarge
             )
         }
         if (formula.text != null) {
-            Text(
-                text = formula.text!!,
-                style = MaterialTheme.typography.bodyLarge
+            if (formula.text!!.isNotEmpty()) {
+                Text(
+                    text = formula.text!!,
+                    style = MaterialTheme.typography.bodyLarge
 
-            )
+                )
+            }
         }
         if (formula.author != null) {
-            Box(
-                contentAlignment = Alignment.CenterEnd,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = formula.author!!,
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.secondary
-                )
+            if (formula.author!!.isNotEmpty()) {
+                Box(
+                    contentAlignment = Alignment.CenterEnd,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        text = formula.author!!,
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                }
             }
         }
     }

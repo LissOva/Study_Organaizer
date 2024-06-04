@@ -19,6 +19,10 @@ class FormulaNoteNoteRepoImpl
         return dao.getAllFormulaNoteById(id)
     }
 
+    override fun getAllFormula(): Flow<List<FormulaNote>> {
+        return dao.getAllFormula()
+    }
+
     override suspend fun deleteFormulaNote(formulaNote: FormulaNote) {
         dao.deleteFormulaNote(formulaNote)
     }

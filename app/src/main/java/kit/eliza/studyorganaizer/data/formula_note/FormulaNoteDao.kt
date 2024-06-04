@@ -22,6 +22,10 @@ interface FormulaNoteDao {
     @Query("SELECT * FROM formula WHERE idNote = :id")
     fun getAllFormulaNoteById(id: Int): Flow<List<FormulaNote>>
 
+    //Получить все формулы
+    @Query("SELECT * FROM formula")
+    fun getAllFormula(): Flow<List<FormulaNote>>
+
     //Удалить формулу
     @Delete
     suspend fun deleteFormulaNote(formulaNote: FormulaNote)

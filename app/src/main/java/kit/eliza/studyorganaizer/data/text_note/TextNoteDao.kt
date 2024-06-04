@@ -22,6 +22,10 @@ interface TextNoteDao {
     @Query("SELECT * FROM text WHERE idNote = :idNote")
     fun getTextById(idNote: Int): Flow<TextNote>
 
+    //Получить все тексты
+    @Query("SELECT * FROM text")
+    fun getAllText(): Flow<List<TextNote>>
+
     //Удалить текст
     @Delete
     suspend fun deleteText(textNote: TextNote)

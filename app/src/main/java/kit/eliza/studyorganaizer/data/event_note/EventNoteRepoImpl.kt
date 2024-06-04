@@ -16,6 +16,10 @@ class EventNoteRepoImpl
         return dao.getAllEventNoteById(id)
     }
 
+    override fun getAllEventNote(): Flow<List<EventNote>> {
+        return dao.getAllEventNote()
+    }
+
     override suspend fun deleteEventNote(eventNote: EventNote) {
         dao.deleteEventNote(eventNote)
     }

@@ -17,6 +17,9 @@ interface FormulaNoteRepository {
     //Получить все формулы заметки
     fun getAllFormulaNoteById(id: Int): Flow<List<FormulaNote>>
 
+    //Получить все формулы
+    fun getAllFormula(): Flow<List<FormulaNote>>
+
     //Удалить формулу
     suspend fun deleteFormulaNote(formulaNote: FormulaNote)
 

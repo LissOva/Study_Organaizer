@@ -8,6 +8,10 @@ class SubjectRepoImpl
         dao.insertSubject(subject)
     }
 
+    override suspend fun insertListSubject(subjects: List<Subject>) {
+        dao.insertListSubject(subjects)
+    }
+
     override suspend fun updateSubject(subject: Subject) {
         dao.updateSubject(subject)
     }
@@ -38,5 +42,9 @@ class SubjectRepoImpl
 
     override suspend fun deleteSubject(subject: Subject) {
         dao.deleteSubject(subject)
+    }
+
+    override suspend fun deleteAllSubject() {
+        dao.deleteAllSubject()
     }
 }

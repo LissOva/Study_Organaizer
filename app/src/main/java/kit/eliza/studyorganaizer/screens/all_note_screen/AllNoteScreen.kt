@@ -1,4 +1,5 @@
 package kit.eliza.studyorganaizer.screens.subject_screen
+
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -42,9 +42,7 @@ import kit.eliza.studyorganaizer.AllNoteEvent
 import kit.eliza.studyorganaizer.ModeNote
 import kit.eliza.studyorganaizer.R
 import kit.eliza.studyorganaizer.Routes
-import kit.eliza.studyorganaizer.SubjectEvent
 import kit.eliza.studyorganaizer.data.note.Note
-import kit.eliza.studyorganaizer.screens.navigate_bar.NavBar
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -52,17 +50,17 @@ import kit.eliza.studyorganaizer.screens.navigate_bar.NavBar
 @Composable
 fun AllNoteScreen(
     navController: NavHostController,
-    vm: AllNoteViewModel = hiltViewModel()){
+    vm: AllNoteViewModel = hiltViewModel()
+) {
     Scaffold(
         topBar = {
             Surface(shadowElevation = 6.dp) {
                 TopAppBar(
                     colors = TopAppBarDefaults.topAppBarColors(
                         containerColor = MaterialTheme.colorScheme.surface,
-                        //titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
                     title = {
-                        Text(stringResource(id = R.string.TitleMyNotes))
+                        Text(stringResource(id = R.string.BarItemNotes))
 
                     }
                 )
@@ -78,17 +76,15 @@ fun AllNoteScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(top = 8.dp, bottom = 200.dp)
             ) {
-                item{
+                item {
                     Spacer(modifier = Modifier.padding(top = 46.dp))
                 }
-                item{
+                item {
                     SearchCard(vm)
                 }
-
-                    items(listNotes.value) { note ->
-                        NoteCard(note = note, navController = navController)
-                    }
-
+                items(listNotes.value) { note ->
+                    NoteCard(note = note, navController = navController)
+                }
             }
         }
 
@@ -102,11 +98,11 @@ fun SearchCard(vm: AllNoteViewModel) {
     SearchBar(
         modifier = Modifier
             .fillMaxWidth(),
-            //.height(56.dp),
         query = search,
-        onQueryChange ={ text -> search = text
+        onQueryChange = { text ->
+            search = text
             vm.onEvent(AllNoteEvent.OnAllNoteEventSearch(search))
-                       },
+        },
         onSearch = {},
         active = false,
         onActiveChange = {},
@@ -114,13 +110,12 @@ fun SearchCard(vm: AllNoteViewModel) {
             Text(text = "Найти запись")
         },
         trailingIcon = {
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Default.Search ,contentDescription =  "Search")
+            IconButton(onClick = {}) {
+                Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
             }
         }
     ) {
     }
-    Spacer(modifier = Modifier.size(8.dp))
 }
 
 @Composable
