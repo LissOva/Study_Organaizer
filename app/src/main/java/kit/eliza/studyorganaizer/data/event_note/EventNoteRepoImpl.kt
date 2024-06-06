@@ -8,6 +8,10 @@ class EventNoteRepoImpl
         dao.insertEventNote(eventNote)
     }
 
+    override suspend fun insertListEventNote(eventNotes: List<EventNote>) {
+        dao.insertListEventNote(eventNotes)
+    }
+
     override suspend fun updateEventNote(eventNote: EventNote) {
         dao.updateEventNote(eventNote)
     }

@@ -1,7 +1,6 @@
-package com.example.organizerstudy.data.formula
+package kit.eliza.studyorganaizer.data.formula_note
 
-import kit.eliza.studyorganaizer.data.formula_note.FormulaNote
-import kit.eliza.studyorganaizer.data.formula_note.FormulaNoteDao
+import com.example.organizerstudy.data.formula.FormulaNoteRepository
 import kotlinx.coroutines.flow.Flow
 
 class FormulaNoteNoteRepoImpl
@@ -9,6 +8,10 @@ class FormulaNoteNoteRepoImpl
 
     override suspend fun insertFormulaNote(formulaNote: FormulaNote) {
         dao.insertFormulaNote(formulaNote)
+    }
+
+    override suspend fun insertListFormulaNote(formulaNotes: List<FormulaNote>) {
+        dao.insertListFormulaNote(formulaNotes)
     }
 
     override suspend fun updateFormulaNote(formulaNote: FormulaNote) {

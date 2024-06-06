@@ -5,7 +5,7 @@ import android.content.ContentValues
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.organizerstudy.data.formula.FormulaNoteNoteRepoImpl
+import kit.eliza.studyorganaizer.data.formula_note.FormulaNoteNoteRepoImpl
 import com.example.organizerstudy.data.formula.FormulaNoteRepository
 import dagger.Module
 import dagger.Provides

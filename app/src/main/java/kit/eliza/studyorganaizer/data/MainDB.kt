@@ -33,10 +33,10 @@ import kit.eliza.studyorganaizer.data.type_note.TypeNoteDao
         QuoteNote::class,
         FormulaNote::class,
         ToDo::class],
-    version = 1_6,
+    version = 1_8,
     exportSchema = true,
     autoMigrations = [
-        AutoMigration (from = 1_5, to = 1_6)
+        AutoMigration (from = 1_7, to = 1_8)
     ]
 )
 

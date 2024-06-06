@@ -14,6 +14,10 @@ interface TextNoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun inserTextNote(textNote: TextNote)
 
+    //Добавить тексты
+    @Insert
+    suspend fun inserAllTextNote(textNotes: List<TextNote>)
+
     //Обновить текст
     @Update
     suspend fun updateTextNote(textNote: TextNote)

@@ -48,11 +48,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import kit.eliza.studyorganaizer.R
 import kit.eliza.studyorganaizer.Routes
-import kit.eliza.studyorganaizer.SubjectEvent
+import kit.eliza.studyorganaizer.screens.SubjectEvent
 import kit.eliza.studyorganaizer.data.subject.Subject
-import kit.eliza.studyorganaizer.dialog.DialogMessage
-import kit.eliza.studyorganaizer.dialog.DialogUI
-import kit.eliza.studyorganaizer.screens.navigate_bar.NavBar
+import kit.eliza.studyorganaizer.dialog.dialogMessage.DialogMessage
+import kit.eliza.studyorganaizer.dialog.dialog.DialogUI
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -154,6 +153,9 @@ fun SubjectCard(
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
+        ),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier

@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import kit.eliza.studyorganaizer.data.subject.Subject
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -14,6 +13,10 @@ interface NoteDao {
     //Добавить заметку
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Note)
+
+    //Добавить заметки
+    @Insert
+    suspend fun insertListNote(notes: List<Note>)
 
     //Обновить заметку
     @Update

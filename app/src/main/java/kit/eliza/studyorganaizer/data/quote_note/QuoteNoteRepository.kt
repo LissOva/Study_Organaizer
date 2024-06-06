@@ -1,11 +1,16 @@
 package kit.eliza.studyorganaizer.data.quote_note
 
+import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 interface QuoteNoteRepository {
     //Добавить цитату
     suspend fun insertQuoteNote(quoteNote: QuoteNote)
+
+    //Добавить цитаты
+    @Insert
+    suspend fun insertListQuoteNote(quoteNotes: List<QuoteNote>)
 
     //Обновить цитату
     suspend fun updateQuoteNote(quoteNote: QuoteNote)

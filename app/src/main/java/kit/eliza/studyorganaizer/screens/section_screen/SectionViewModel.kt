@@ -1,25 +1,22 @@
 package kit.eliza.studyorganaizer.screens.section_screen
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.organizerstudy.dialog.DialogMessageEvent
+import kit.eliza.studyorganaizer.dialog.dialogMessage.DialogMessageEvent
 
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kit.eliza.studyorganaizer.SectionEvent
+import kit.eliza.studyorganaizer.screens.SectionEvent
 import kit.eliza.studyorganaizer.Routes
 import kit.eliza.studyorganaizer.data.note.Note
 import kit.eliza.studyorganaizer.data.note.NoteRepository
 import kit.eliza.studyorganaizer.data.section.Section
 import kit.eliza.studyorganaizer.data.section.SectionRepository
 import kit.eliza.studyorganaizer.data.subject.SubjectRepository
-import kit.eliza.studyorganaizer.dialog.DialogController
-import kit.eliza.studyorganaizer.dialog.DialogEvent
-import kit.eliza.studyorganaizer.dialog.DialogMessageController
-import kotlinx.coroutines.async
+import kit.eliza.studyorganaizer.dialog.dialog.DialogController
+import kit.eliza.studyorganaizer.dialog.dialog.DialogEvent
+import kit.eliza.studyorganaizer.dialog.dialogMessage.DialogMessageController
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

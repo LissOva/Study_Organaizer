@@ -10,8 +10,14 @@ interface ToDoRepository {
     //Добавить или обновить задачу
     suspend fun insertToDo(toDo: ToDo)
 
+    //Добавить задачи
+    suspend fun insertListToDo(toDos: List<ToDo>)
+
     //Обновить задачу
     suspend fun updateToDo(toDo: ToDo)
+
+    //Получить избранные не выполненные задачи
+    fun getFavouriteToDo(): Flow<List<ToDo>>
 
     //Получить не выполненные задачи
     fun getToDo(): Flow<List<ToDo>>

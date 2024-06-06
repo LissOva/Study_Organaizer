@@ -14,6 +14,10 @@ interface QuoteNoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertQuoteNote(quoteNote: QuoteNote)
 
+    //Добавить цитаты
+    @Insert
+    suspend fun insertListQuoteNote(quoteNotes: List<QuoteNote>)
+
     //Обновить цитату
     @Update
     suspend fun updateQuoteNote(quoteNote: QuoteNote)

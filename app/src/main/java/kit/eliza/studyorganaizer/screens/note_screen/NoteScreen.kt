@@ -1,6 +1,11 @@
 package kit.eliza.studyorganaizer.screens.note_screen
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +16,6 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -25,7 +29,6 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
@@ -41,30 +44,30 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import kit.eliza.studyorganaizer.ModeNote
-import kit.eliza.studyorganaizer.NoteBlock
-import kit.eliza.studyorganaizer.NoteEvent
+import kit.eliza.studyorganaizer.screens.ModeNote
+import kit.eliza.studyorganaizer.screens.NoteBlock
+import kit.eliza.studyorganaizer.screens.NoteEvent
 import kit.eliza.studyorganaizer.R
 import kit.eliza.studyorganaizer.data.event_note.EventNote
 import kit.eliza.studyorganaizer.data.formula_note.FormulaNote
-import kit.eliza.studyorganaizer.data.note.Note
 import kit.eliza.studyorganaizer.data.quote_note.QuoteNote
 import kit.eliza.studyorganaizer.data.text_note.TextNote
-import kit.eliza.studyorganaizer.dialog.DialogMessage
+import kit.eliza.studyorganaizer.dialog.dialogMessage.DialogMessage
 import kit.eliza.studyorganaizer.screens.EventBlock
 import kit.eliza.studyorganaizer.screens.EventBlockEdit
 import kit.eliza.studyorganaizer.screens.FormulaBlock
@@ -187,7 +190,7 @@ fun NoteScreen(
                                                 }
                                             }
                                             listFormula.forEach{formula ->
-                                                if(formula.text == ""){
+                                                if(formula.formula == ""){
                                                     flag = true
                                                 }
                                             }
@@ -407,7 +410,7 @@ fun NoteScreen(
                             },
                             modifier = modifierScreen.padding(top = 4.dp)
                         ) {
-                            AddLabel(label = "Формулы")
+                            AddLabel(label = "Формула")
                         }
                     }
                 }
@@ -497,7 +500,9 @@ fun Title(title: String) {
 fun TitleSmall(title: String) {
     Text(
         text = title,
-        style = MaterialTheme.typography.titleMedium,
+        style = MaterialTheme.typography.titleSmall,
+        color = MaterialTheme.colorScheme.primary,
+        fontSize = 16.sp,
         modifier = Modifier
             .padding(start = 16.dp, top = 6.dp)
     )

@@ -10,11 +10,15 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EventNoteDao {
-    //Добавить запись события
+    //Добавить событие
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEventNote(eventNote: EventNote)
 
-    //Обновить запись события
+    //Добавить события
+    @Insert
+    suspend fun insertListEventNote(eventNotes: List<EventNote>)
+
+    //Обновить событие
     @Update
     suspend fun updateEventNote(eventNote: EventNote)
 

@@ -8,6 +8,10 @@ class NoteRepoImpl
         dao.insertNote(note)
     }
 
+    override suspend fun insertListNote(notes: List<Note>) {
+        dao.insertListNote(notes)
+    }
+
     override suspend fun updateNote(note: Note) {
         dao.updateNote(note)
     }

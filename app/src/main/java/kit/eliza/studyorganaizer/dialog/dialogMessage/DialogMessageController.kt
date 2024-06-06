@@ -1,7 +1,6 @@
-package kit.eliza.studyorganaizer.dialog
+package kit.eliza.studyorganaizer.dialog.dialogMessage
 
 import androidx.compose.runtime.MutableState
-import com.example.organizerstudy.dialog.DialogMessageEvent
 
 interface DialogMessageController {
 

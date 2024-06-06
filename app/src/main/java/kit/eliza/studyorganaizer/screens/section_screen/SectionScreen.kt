@@ -17,9 +17,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.Article
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.Article
+import androidx.compose.material.icons.outlined.Bookmark
+import androidx.compose.material.icons.outlined.BookmarkBorder
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.PriorityHigh
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -44,16 +52,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import kit.eliza.studyorganaizer.ModeNote
+import kit.eliza.studyorganaizer.screens.ModeNote
 import kit.eliza.studyorganaizer.Routes
-import kit.eliza.studyorganaizer.SectionEvent
+import kit.eliza.studyorganaizer.screens.SectionEvent
 import kit.eliza.studyorganaizer.data.note.Note
 import kit.eliza.studyorganaizer.data.section.Section
-import kit.eliza.studyorganaizer.dialog.DialogMessage
-import kit.eliza.studyorganaizer.dialog.DialogUI
+import kit.eliza.studyorganaizer.dialog.dialogMessage.DialogMessage
+import kit.eliza.studyorganaizer.dialog.dialog.DialogUI
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -171,6 +180,9 @@ fun SectionCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+        ),
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
             .combinedClickable(
@@ -218,9 +230,6 @@ fun SectionCard(
 
             Card(
                 shape = MaterialTheme.shapes.small,
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                ),
                 modifier = Modifier
                     .padding(
                         top = 4.dp
@@ -263,7 +272,7 @@ fun NoteCard(
     Card(
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            containerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier
             .padding(top = 4.dp)
@@ -277,11 +286,25 @@ fun NoteCard(
                 .fillMaxWidth()
                 .height(46.dp)
         ) {
+            var iconType = Icons.AutoMirrored.Outlined.Article
+            when(note.idType){
+                2 ->{
+                    iconType = Icons.Outlined.AccountBox
+                }
+                3 ->{
+                    iconType = Icons.Outlined.PriorityHigh
+                }
+                4 -> {
+                    iconType = Icons.Outlined.BookmarkBorder
+                }
+            }
+            Icon(imageVector = iconType, contentDescription = "type", modifier = Modifier
+                .padding(start = 8.dp))
             Text(
                 text = note.name,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
-                    .padding(start = 8.dp)
+                    .padding(start = 4.dp)
             )
         }
     }

@@ -3,15 +3,15 @@ package kit.eliza.studyorganaizer.screens.to_do_screen
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.organizerstudy.dialog.DialogMessageEvent
+import kit.eliza.studyorganaizer.dialog.dialogMessage.DialogMessageEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kit.eliza.studyorganaizer.Routes
-import kit.eliza.studyorganaizer.ToDoEvent
+import kit.eliza.studyorganaizer.screens.ToDoEvent
 import kit.eliza.studyorganaizer.data.to_do.ToDo
 import kit.eliza.studyorganaizer.data.to_do.ToDoRepository
-import kit.eliza.studyorganaizer.dialog.DialogController
-import kit.eliza.studyorganaizer.dialog.DialogEvent
-import kit.eliza.studyorganaizer.dialog.DialogMessageController
+import kit.eliza.studyorganaizer.dialog.dialog.DialogController
+import kit.eliza.studyorganaizer.dialog.dialog.DialogEvent
+import kit.eliza.studyorganaizer.dialog.dialogMessage.DialogMessageController
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,6 +23,7 @@ class ToDoViewModel @Inject constructor(
 
     var toDo: ToDo? = null
 
+    var listFavouriteToDo: Flow<List<ToDo>>? = null
     var listToDo: Flow<List<ToDo>>? = null
     var listCompleteToDo: Flow<List<ToDo>>? = null
 
@@ -45,6 +46,7 @@ class ToDoViewModel @Inject constructor(
     fun onEvent(event: ToDoEvent){
         when(event) {
             is ToDoEvent.GetToDo -> {
+                listFavouriteToDo = toDoRep.getFavouriteToDo()
                 listToDo = toDoRep.getToDo()
                 listCompleteToDo = toDoRep.getCompleteToDo()
             }
@@ -54,8 +56,8 @@ class ToDoViewModel @Inject constructor(
                         toDoRep.insertToDo(event.toDo)
                     }
                 }
+                onEvent(ToDoEvent.GetToDo)
             }
-
             is ToDoEvent.OnToDoEventNameChange -> TODO()
             is ToDoEvent.OnPressToDoEvent -> {
                 showSort.value = false

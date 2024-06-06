@@ -8,6 +8,10 @@ class TextNoteRepoImpl
         dao.inserTextNote(textNote)
     }
 
+    override suspend fun inserAllTextNote(textNotes: List<TextNote>) {
+        dao.inserAllTextNote(textNotes)
+    }
+
     override suspend fun updateTextNote(textNote: TextNote) {
         dao.updateTextNote(textNote)
     }

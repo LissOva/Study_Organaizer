@@ -115,7 +115,8 @@ fun QuoteBlock(
             Icon(
                 imageVector = Icons.Default.FormatQuote,
                 contentDescription = "quote",
-                modifier = Modifier.rotate(180f)
+                modifier = Modifier.rotate(180f),
+                tint = MaterialTheme.colorScheme.primary
             )
             Text(
                 text = quote.text,
@@ -196,8 +197,8 @@ fun FormulaBlock(
         ) {
             Text(
                 text = formula.formula,
-                fontSize = 36.sp,
-                style = MaterialTheme.typography.labelLarge
+                style = MaterialTheme.typography.displaySmall,
+                textAlign = TextAlign.Center
             )
         }
         if (formula.text != null) {

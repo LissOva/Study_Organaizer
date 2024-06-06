@@ -8,6 +8,10 @@ class SectionRepoImpl
         dao.insertSection(section)
     }
 
+    override suspend fun insertListSection(sections: List<Section>) {
+        dao.insertListSection(sections)
+    }
+
     override suspend fun updateSection(section: Section) {
         dao.updateSection(section)
     }

@@ -11,6 +11,9 @@ interface FormulaNoteRepository {
     //Добавить формулу
     suspend fun insertFormulaNote(formulaNote: FormulaNote)
 
+    //Добавить формулы
+    suspend fun insertListFormulaNote(formulaNotes: List<FormulaNote>)
+
     //Обновить формулу
     suspend fun updateFormulaNote(formulaNote: FormulaNote)
 

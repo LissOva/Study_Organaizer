@@ -1,4 +1,4 @@
-package kit.eliza.studyorganaizer
+package kit.eliza.studyorganaizer.screens
 
 import kit.eliza.studyorganaizer.data.event_note.EventNote
 import kit.eliza.studyorganaizer.data.formula_note.FormulaNote
@@ -75,5 +75,7 @@ sealed class ToDoEvent {
 sealed class SettingEvent{
     data object DoJsonFile : SettingEvent()
     data object GetData : SettingEvent()
+    data object OnDoJsonFile : SettingEvent()
+    data object OnGetData : SettingEvent()
     data object UseJsonFile : SettingEvent()
 }

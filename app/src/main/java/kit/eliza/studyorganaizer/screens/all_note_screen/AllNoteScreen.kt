@@ -13,7 +13,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.Article
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.BookmarkBorder
+import androidx.compose.material.icons.outlined.PriorityHigh
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -38,8 +42,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import kit.eliza.studyorganaizer.AllNoteEvent
-import kit.eliza.studyorganaizer.ModeNote
+import kit.eliza.studyorganaizer.screens.AllNoteEvent
+import kit.eliza.studyorganaizer.screens.ModeNote
 import kit.eliza.studyorganaizer.R
 import kit.eliza.studyorganaizer.Routes
 import kit.eliza.studyorganaizer.data.note.Note
@@ -127,6 +131,9 @@ fun NoteCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+        ),
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
             .clickable {
@@ -139,12 +146,27 @@ fun NoteCard(
                 .fillMaxWidth()
                 .height(56.dp)
         ) {
+            var iconType = Icons.AutoMirrored.Outlined.Article
+            when(note.idType){
+                2 ->{
+                    iconType = Icons.Outlined.AccountBox
+                }
+                3 ->{
+                    iconType = Icons.Outlined.PriorityHigh
+                }
+                4 -> {
+                    iconType = Icons.Outlined.BookmarkBorder
+                }
+            }
+            Icon(imageVector = iconType, contentDescription = "type", modifier = Modifier
+                .padding(start = 8.dp))
             Text(
                 text = note.name,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
                     .padding(start = 8.dp)
                     .weight(1f)
+
             )
         }
     }

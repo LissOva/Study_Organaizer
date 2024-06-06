@@ -3,12 +3,9 @@ package kit.eliza.studyorganaizer.screens.subject_screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kit.eliza.studyorganaizer.AllNoteEvent
-import kit.eliza.studyorganaizer.SubjectEvent
+import kit.eliza.studyorganaizer.screens.AllNoteEvent
 import kit.eliza.studyorganaizer.data.note.Note
 import kit.eliza.studyorganaizer.data.note.NoteRepository
-import kit.eliza.studyorganaizer.data.subject.Subject
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

@@ -14,6 +14,10 @@ interface FormulaNoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFormulaNote(formulaNote: FormulaNote)
 
+    //Добавить формулы
+    @Insert
+    suspend fun insertListFormulaNote(formulaNotes: List<FormulaNote>)
+
     //Обновить формулу
     @Update
     suspend fun updateFormulaNote(formulaNote: FormulaNote)

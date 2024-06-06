@@ -1,11 +1,15 @@
 package kit.eliza.studyorganaizer.data.event_note
 
+import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 interface EventNoteRepository {
     //Добавить запись события
     suspend fun insertEventNote(eventNote: EventNote)
+
+    //Добавить события
+    suspend fun insertListEventNote(eventNotes: List<EventNote>)
 
     //Обновить запись события
     suspend fun updateEventNote(eventNote: EventNote)

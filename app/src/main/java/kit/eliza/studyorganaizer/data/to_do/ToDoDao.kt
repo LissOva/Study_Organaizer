@@ -15,12 +15,20 @@ interface ToDoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertToDo(toDo: ToDo)
 
+    //Добавить задачи
+    @Insert
+    suspend fun insertListToDo(toDos: List<ToDo>)
+
     //Обновить задачу
     @Update
     suspend fun updateToDo(toDo: ToDo)
 
+    //Получить избранные не выполненные задачи
+    @Query("SELECT * FROM to_do WHERE status = 0 AND favourite = 1 ORDER BY id DESC")
+    fun getFavouriteToDo(): Flow<List<ToDo>>
+
     //Получить не выполненные задачи
-    @Query("SELECT * FROM to_do WHERE status = 0 ORDER BY id DESC")
+    @Query("SELECT * FROM to_do WHERE status = 0 AND favourite = 0 ORDER BY id DESC")
     fun getToDo(): Flow<List<ToDo>>
 
     //Получить выполненные задачи

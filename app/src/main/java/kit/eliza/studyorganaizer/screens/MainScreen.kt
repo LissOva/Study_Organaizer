@@ -1,7 +1,13 @@
 package kit.eliza.studyorganaizer.screens
 
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
+import android.content.pm.ActivityInfo
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -19,6 +25,7 @@ import kit.eliza.studyorganaizer.screens.to_do_screen.ToDoScreen
 
 @Composable
 fun MainScreen(){
+    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
@@ -48,7 +55,7 @@ fun AppNavGraph(navController: NavHostController) {
             ToDoScreen()
         }
         composable(Routes.SETTING_SCREEN) {
-            SettingScreen(navController)
+            SettingScreen()
         }
         composable(
             Routes.NOTE_SCREEN + "/{noteId}" + "/{mode}",
@@ -62,4 +69,24 @@ fun AppNavGraph(navController: NavHostController) {
                 backstackEntry.arguments?.getString("mode")!!)
         }
     }
+}
+
+@Composable
+fun LockScreenOrientation(orientation: Int) {
+    val context = LocalContext.current
+    DisposableEffect(orientation) {
+        val activity = context.findActivity() ?: return@DisposableEffect onDispose {}
+        val originalOrientation = activity.requestedOrientation
+        activity.requestedOrientation = orientation
+        onDispose {
+            // Восстановление оригинальной ориентации при исчезновении экрана
+            activity.requestedOrientation = originalOrientation
+        }
+    }
+}
+
+fun Context.findActivity(): Activity? = when (this) {
+    is Activity -> this
+    is ContextWrapper -> baseContext.findActivity()
+    else -> null
 }

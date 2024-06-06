@@ -1,4 +1,4 @@
-package com.example.organizerstudy.dialog
+package kit.eliza.studyorganaizer.dialog.dialogMessage
 
 sealed class DialogMessageEvent {
     object OnCancel: DialogMessageEvent()

@@ -10,6 +10,9 @@ interface NoteRepository {
     //Добавить заметку
     suspend fun insertNote(note: Note)
 
+    //Добавить заметки
+    suspend fun insertListNote(notes: List<Note>)
+
     //Обновить заметку
     suspend fun updateNote(note: Note)
 

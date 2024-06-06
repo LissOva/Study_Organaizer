@@ -1,5 +1,6 @@
 package kit.eliza.studyorganaizer.data.text_note
 
+import androidx.room.Insert
 import androidx.room.Query
 import kit.eliza.studyorganaizer.data.text_note.TextNote
 import kotlinx.coroutines.flow.Flow
@@ -7,6 +8,9 @@ import kotlinx.coroutines.flow.Flow
 interface TextNoteRepository {
     //Добавить текст
     suspend fun inserTextNote(textNote: TextNote)
+
+    //Добавить тексты
+    suspend fun inserAllTextNote(textNotes: List<TextNote>)
 
     //Обновить текст
     suspend fun updateTextNote(textNote: TextNote)

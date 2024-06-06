@@ -1,4 +1,4 @@
-package kit.eliza.studyorganaizer
+package kit.eliza.studyorganaizer.screens
 
 object NoteBlock{
     const val NOTE = "note"

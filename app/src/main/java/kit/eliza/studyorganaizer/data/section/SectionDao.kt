@@ -14,6 +14,10 @@ interface SectionDao {
     @Insert
     suspend fun insertSection(section: Section)
 
+    //Добавить разделы
+    @Insert
+    suspend fun insertListSection(sections: List<Section>)
+
     //Обновить раздел
     @Update
     suspend fun updateSection(section: Section)

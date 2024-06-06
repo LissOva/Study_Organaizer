@@ -7,6 +7,10 @@ class QuoteNoteNoteRepoImpl
         dao.insertQuoteNote(quoteNote)
     }
 
+    override suspend fun insertListQuoteNote(quoteNotes: List<QuoteNote>) {
+        dao.insertListQuoteNote(quoteNotes)
+    }
+
     override suspend fun updateQuoteNote(quoteNote: QuoteNote) {
         dao.updateQuoteNote(quoteNote)
     }

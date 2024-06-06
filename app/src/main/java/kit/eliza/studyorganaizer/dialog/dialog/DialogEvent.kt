@@ -1,4 +1,4 @@
-package kit.eliza.studyorganaizer.dialog
+package kit.eliza.studyorganaizer.dialog.dialog
 
 sealed class DialogEvent {
     data class OnTextChange(val text: String): DialogEvent()
