@@ -33,4 +33,6 @@ Android, Kotlin + Jetpack Compose
 
 ![App Screenshot](https://i.ibb.co/yQTf42c/image.png)
 
+![App Screenshot](https://i.ibb.co/7yw0K4J/image.png)
+
 
