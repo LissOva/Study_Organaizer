@@ -25,6 +25,8 @@ Android, Kotlin + Jetpack Compose
 
 
 ## Интерфейс
+![App Screenshot](https://i.ibb.co/7yw0K4J/image.png)
+
 ![App Screenshot](https://i.ibb.co/X7cXJq2/image.png)
 
 ![App Screenshot](https://i.ibb.co/c3nPDzt/image.png)
@@ -33,6 +35,6 @@ Android, Kotlin + Jetpack Compose
 
 ![App Screenshot](https://i.ibb.co/yQTf42c/image.png)
 
-![App Screenshot](https://i.ibb.co/7yw0K4J/image.png)
+
 
 
